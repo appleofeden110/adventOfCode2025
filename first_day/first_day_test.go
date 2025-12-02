@@ -55,12 +55,6 @@ func TestFindZeroMethod0x434C49434B(t *testing.T) {
 
 		p.ActualPassword += atZero
 
-		if res == 0 {
-			if r.NumChange == 0 {
-				log.Println(scanner.Text())
-			}
-		}
-
 	}
 	fmt.Printf("Actual password by method 0x434C49434B: %d\n", p.ActualPassword)
 }

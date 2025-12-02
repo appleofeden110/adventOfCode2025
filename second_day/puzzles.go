@@ -21,3 +21,9 @@ func ClearInput(input string) []Range {
 
 	return trueRanges
 }
+
+func FindInvalidID(ranges []Range) int32 {
+	for _, r := range ranges {
+
+	}
+}
