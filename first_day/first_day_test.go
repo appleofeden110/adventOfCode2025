@@ -54,7 +54,6 @@ func TestFindZeroMethod0x434C49434B(t *testing.T) {
 		p.LastRotation = *r
 
 		p.ActualPassword += atZero
-
 	}
 	fmt.Printf("Actual password by method 0x434C49434B: %d\n", p.ActualPassword)
 }
