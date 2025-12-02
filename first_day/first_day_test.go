@@ -1,7 +1,6 @@
-package firstday_test
+package firstday
 
 import (
-	firstday "advent2026/first_day"
 	"bufio"
 	"fmt"
 	"log"
@@ -10,7 +9,7 @@ import (
 )
 
 func TestFindZero(t *testing.T) {
-	p := firstday.Password{ActualPassword: 0}
+	p := Password{ActualPassword: 0}
 
 	f, err := os.OpenFile("./input.txt", os.O_RDONLY, 0777)
 	if err != nil {
@@ -18,11 +17,11 @@ func TestFindZero(t *testing.T) {
 	}
 	scanner := bufio.NewScanner(f)
 
-	start := firstday.DialStart
+	start := DialStart
 	for scanner.Scan() {
-		r := firstday.GetRotation(scanner.Text())
+		r := GetRotation(scanner.Text())
 
-		res := firstday.FindZero(start, *r)
+		res := FindZero(start, *r)
 		start = res
 		p.LastRotation = *r
 
@@ -37,19 +36,20 @@ func TestFindZero(t *testing.T) {
 }
 
 func TestFindZeroMethod0x434C49434B(t *testing.T) {
-	p := firstday.Password{ActualPassword: 0}
+	p := Password{ActualPassword: 0}
 
 	f, err := os.OpenFile("./input.txt", os.O_RDONLY, 0777)
 	if err != nil {
 		t.Fatalf("Err reading input file: %v\n", err)
 	}
+	defer f.Close()
 	scanner := bufio.NewScanner(f)
 
-	start := firstday.DialStart
+	start := DialStart
 	for scanner.Scan() {
-		r := firstday.GetRotation(scanner.Text())
+		r := GetRotation(scanner.Text())
 
-		res, atZero := firstday.FindZeroMethod0x434C49434B(start, *r)
+		res, atZero := FindZeroMethod0x434C49434B(start, *r)
 		start = res
 		p.LastRotation = *r
 
@@ -59,7 +59,6 @@ func TestFindZeroMethod0x434C49434B(t *testing.T) {
 			if r.NumChange == 0 {
 				log.Println(scanner.Text())
 			}
-			p.ActualPassword++
 		}
 
 	}

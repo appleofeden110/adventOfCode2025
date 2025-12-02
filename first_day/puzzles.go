@@ -1,6 +1,7 @@
 package firstday
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -104,15 +105,21 @@ func FindZeroMethod0x434C49434B(start int, r Rotation) (int, int) {
 		}
 	case left:
 		for {
-			if change == 0 {
+			if change <= 0 {
 				break
 			}
 
 			start--
 			if start == -1 {
-				atZeroTimes++
 				start = 99
+				fmt.Println(start, change, atZeroTimes)
 			}
+
+			if start == 0 {
+				atZeroTimes++
+			}
+
+			fmt.Println(start, change)
 			change--
 		}
 	}
